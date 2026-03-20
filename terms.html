@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | R Vision Tax LLC</title>
+    <link rel="icon" type="image/webp" href="images/favicon.webp">
+    <style>
+        @font-face {
+            font-family: 'Rinter';
+            src: url('fonts/Rinter.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'SpartanMB';
+            src: url('fonts/SpartanMB-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+        :root {
+            --primary-blue: #3000ff;
+            --black: #000000;
+            --white: #ffffff;
+            --dark-gray: #1a1a1a;
+            --light-gray: #f5f5f5;
+            --gradient-blue: linear-gradient(135deg, #3000ff 0%, #1a00aa 100%);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'SpartanMB', 'Helvetica Neue', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(48, 0, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            height: 40px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+        .lang-toggle {
+            background: transparent;
+            border: 1px solid var(--primary-blue);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-family: 'SpartanMB', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+        .lang-toggle:hover {
+            background: var(--primary-blue);
+        }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(48, 0, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-family: 'Rinter', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero h1 span {
+            color: var(--primary-blue);
+        }
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .r-icon {
+            width: 80px;
+            margin-bottom: 2rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        /* Main Content */
+        .terms-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem 6rem;
+        }
+        .terms-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(48, 0, 255, 0.15);
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+        .terms-section:hover {
+            border-color: rgba(48, 0, 255, 0.4);
+        }
+        .terms-section h2 {
+            font-family: 'Rinter', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .terms-section h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary-blue);
+            display: inline-block;
+        }
+        .terms-section p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        .terms-section ul {
+            margin: 1rem 0 1rem 1.5rem;
+            opacity: 0.9;
+        }
+        .terms-section li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+        }
+        .terms-section strong {
+            color: var(--white);
+        }
+        .highlight-box {
+            background: rgba(48, 0, 255, 0.1);
+            border-left: 4px solid var(--primary-blue);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight-box p {
+            margin: 0;
+        }
+        .last-updated {
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            transition: gap 0.3s ease;
+        }
+        .back-link:hover {
+            gap: 0.75rem;
+        }
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-gray);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(48, 0, 255, 0.2);
+        }
+        .footer-logo {
+            height: 30px;
+            margin-bottom: 1.5rem;
+        }
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        .footer-links {
+            margin-top: 1rem;
+        }
+        .footer-links a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.85rem;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .terms-section {
+                padding: 1.5rem;
+            }
+            .terms-section h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html">
+            <img src="images/logowhite.webp" alt="R Vision Tax" class="nav-logo">
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html#home" data-en="Home" data-es="Inicio">Home</a>
+            <a href="index.html#about" data-en="About" data-es="Nosotros">About</a>
+            <a href="index.html#faq" data-en="FAQ's" data-es="Preguntas">FAQ's</a>
+            <a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
+            <a href="onboarding.html" data-en="Onboarding" data-es="Registro">Onboarding</a>
+            <button class="lang-toggle" onclick="toggleLanguage()">ES</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="images/rblue.webp" alt="R" class="r-icon">
+            <h1><span data-en="Terms" data-es="Términos">Terms</span> & <span data-en="Conditions" data-es="Condiciones">Conditions</span></h1>
+            <p data-en="Legal terms governing the use of R Vision Tax services" data-es="Términos legales que rigen el uso de los servicios de R Vision Tax">Legal terms governing the use of R Vision Tax services</p>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <main class="terms-content">
+        <a href="index.html" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span data-en="Back to Home" data-es="Volver al Inicio">Back to Home</span>
+        </a>
+
+        <!-- Section 1: Agreement -->
+        <div class="terms-section">
+            <h2 data-en="1. Agreement to Terms" data-es="1. Aceptación de Términos">1. Agreement to Terms</h2>
+            <p data-en="By accessing or using the services provided by R Vision Tax LLC ('Company', 'we', 'us', or 'our'), including our website and tax preparation services, you agree to be bound by these Terms and Conditions ('Terms'). If you do not agree to these Terms, please do not use our services." data-es="Al acceder o utilizar los servicios proporcionados por R Vision Tax LLC ('Compañía', 'nosotros', 'nos' o 'nuestro'), incluyendo nuestro sitio web y servicios de preparación de impuestos, usted acepta estar sujeto a estos Términos y Condiciones ('Términos'). Si no está de acuerdo con estos Términos, por favor no utilice nuestros servicios.">By accessing or using the services provided by R Vision Tax LLC ('Company', 'we', 'us', or 'our'), including our website and tax preparation services, you agree to be bound by these Terms and Conditions ('Terms'). If you do not agree to these Terms, please do not use our services.</p>
+            <div class="highlight-box">
+                <p data-en="These Terms constitute a legally binding agreement between you and R Vision Tax LLC." data-es="Estos Términos constituyen un acuerdo legalmente vinculante entre usted y R Vision Tax LLC."><strong data-en="Important:" data-es="Importante:">Important:</strong> These Terms constitute a legally binding agreement between you and R Vision Tax LLC.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Services Description -->
+        <div class="terms-section">
+            <h2 data-en="2. Services Description" data-es="2. Descripción de Servicios">2. Services Description</h2>
+            <p data-en="R Vision Tax LLC provides professional tax preparation services specializing in:" data-es="R Vision Tax LLC proporciona servicios profesionales de preparación de impuestos especializándose en:">R Vision Tax LLC provides professional tax preparation services specializing in:</p>
+            <ul>
+                <li data-en="Schedule C returns for self-employed individuals and independent contractors" data-es="Declaraciones Schedule C para trabajadores independientes y contratistas">Schedule C returns for self-employed individuals and independent contractors</li>
+                <li data-en="Tax preparation for rideshare drivers (Uber, Lyft, DoorDash, etc.)" data-es="Preparación de impuestos para conductores de plataformas (Uber, Lyft, DoorDash, etc.)">Tax preparation for rideshare drivers (Uber, Lyft, DoorDash, etc.)</li>
+                <li data-en="Corporate tax returns (Forms 1120, 1120-S)" data-es="Declaraciones de impuestos corporativos (Formularios 1120, 1120-S)">Corporate tax returns (Forms 1120, 1120-S)</li>
+                <li data-en="Complex business tax preparation and filing" data-es="Preparación y presentación de impuestos empresariales complejos">Complex business tax preparation and filing</li>
+            </ul>
+            <p data-en="We are not a general bookkeeping or payroll service. Our focus is exclusively on tax preparation and compliance." data-es="No somos un servicio general de contabilidad o nómina. Nuestro enfoque es exclusivamente en la preparación de impuestos y cumplimiento.">We are not a general bookkeeping or payroll service. Our focus is exclusively on tax preparation and compliance.</p>
+        </div>
+
+        <!-- Section 3: Client Responsibilities -->
+        <div class="terms-section">
+            <h2 data-en="3. Client Responsibilities" data-es="3. Responsabilidades del Cliente">3. Client Responsibilities</h2>
+            <p data-en="As a client of R Vision Tax LLC, you agree to:" data-es="Como cliente de R Vision Tax LLC, usted acepta:">As a client of R Vision Tax LLC, you agree to:</p>
+            <ul>
+                <li data-en="Provide accurate, complete, and truthful information for tax preparation" data-es="Proporcionar información precisa, completa y veraz para la preparación de impuestos">Provide accurate, complete, and truthful information for tax preparation</li>
+                <li data-en="Review your tax return for accuracy before signing" data-es="Revisar su declaración de impuestos para verificar su exactitud antes de firmar">Review your tax return for accuracy before signing</li>
+                <li data-en="Retain copies of all documentation submitted for at least seven (7) years" data-es="Conservar copias de toda la documentación presentada durante al menos siete (7) años">Retain copies of all documentation submitted for at least seven (7) years</li>
+                <li data-en="Promptly respond to any requests for additional information" data-es="Responder prontamente a cualquier solicitud de información adicional">Promptly respond to any requests for additional information</li>
+                <li data-en="Notify us of any changes to your contact information" data-es="Notificarnos cualquier cambio en su información de contacto">Notify us of any changes to your contact information</li>
+            </ul>
+            <div class="highlight-box">
+                <p data-en="You are ultimately responsible for the accuracy of the information provided and the contents of your tax return." data-es="Usted es el responsable final de la exactitud de la información proporcionada y el contenido de su declaración de impuestos."><strong data-en="Note:" data-es="Nota:">Note:</strong> You are ultimately responsible for the accuracy of the information provided and the contents of your tax return.</p>
+            </div>
+        </div>
+
+        <!-- Section 4: Fees and Payment -->
+        <div class="terms-section">
+            <h2 data-en="4. Fees and Payment" data-es="4. Honorarios y Pagos">4. Fees and Payment</h2>
+            <p data-en="R Vision Tax LLC operates on a fixed-fee structure:" data-es="R Vision Tax LLC opera con una estructura de honorarios fijos:">R Vision Tax LLC operates on a fixed-fee structure:</p>
+            <ul>
+                <li data-en="All fees are quoted upfront before services begin" data-es="Todos los honorarios se cotizan por adelantado antes de que comiencen los servicios">All fees are quoted upfront before services begin</li>
+                <li data-en="Fees are based on the complexity of your return, not hourly billing" data-es="Los honorarios se basan en la complejidad de su declaración, no en facturación por hora">Fees are based on the complexity of your return, not hourly billing</li>
+                <li data-en="Payment is due upon completion of tax preparation services" data-es="El pago vence al completar los servicios de preparación de impuestos">Payment is due upon completion of tax preparation services</li>
+                <li data-en="Additional fees may apply for amended returns or additional services" data-es="Pueden aplicarse cargos adicionales por declaraciones enmendadas o servicios adicionales">Additional fees may apply for amended returns or additional services</li>
+            </ul>
+            <p data-en="By signing the engagement form, you commit to paying the costs associated with the preparation of your tax return. This is not an estimate request." data-es="Al firmar el formulario de contratación, usted se compromete a pagar los costos asociados con la preparación de su declaración de impuestos. Esta no es una solicitud de estimación.">By signing the engagement form, you commit to paying the costs associated with the preparation of your tax return. This is not an estimate request.</p>
+        </div>
+
+        <!-- Section 5: Electronic Filing -->
+        <div class="terms-section">
+            <h2 data-en="5. Electronic Filing (E-File)" data-es="5. Presentación Electrónica (E-File)">5. Electronic Filing (E-File)</h2>
+            <p data-en="R Vision Tax LLC acts as an authorized Electronic Return Originator (ERO):" data-es="R Vision Tax LLC actúa como un Originador de Declaraciones Electrónicas (ERO) autorizado:">R Vision Tax LLC acts as an authorized Electronic Return Originator (ERO):</p>
+            <ul>
+                <li data-en="We are responsible for the compliant electronic submission of prepared returns to the IRS and applicable state agencies" data-es="Somos responsables de la presentación electrónica conforme de las declaraciones preparadas al IRS y agencias estatales aplicables">We are responsible for the compliant electronic submission of prepared returns to the IRS and applicable state agencies</li>
+                <li data-en="Your electronic signature authorizes us to file on your behalf" data-es="Su firma electrónica nos autoriza a presentar en su nombre">Your electronic signature authorizes us to file on your behalf</li>
+                <li data-en="We will provide confirmation of successful filing" data-es="Proporcionaremos confirmación de la presentación exitosa">We will provide confirmation of successful filing</li>
+            </ul>
+        </div>
+
+        <!-- Section 6: Digital Signatures -->
+        <div class="terms-section">
+            <h2 data-en="6. Digital Signatures" data-es="6. Firmas Digitales">6. Digital Signatures</h2>
+            <p data-en="By providing your digital signature through our Smart Intake Form, you acknowledge and agree that:" data-es="Al proporcionar su firma digital a través de nuestro Formulario Inteligente de Registro, usted reconoce y acepta que:">By providing your digital signature through our Smart Intake Form, you acknowledge and agree that:</p>
+            <ul>
+                <li data-en="Your digital signature is legally binding and equivalent to a handwritten signature" data-es="Su firma digital es legalmente vinculante y equivalente a una firma manuscrita">Your digital signature is legally binding and equivalent to a handwritten signature</li>
+                <li data-en="You have reviewed and approve all information submitted" data-es="Ha revisado y aprueba toda la información enviada">You have reviewed and approve all information submitted</li>
+                <li data-en="You authorize R Vision Tax LLC to prepare and file your tax return" data-es="Autoriza a R Vision Tax LLC a preparar y presentar su declaración de impuestos">You authorize R Vision Tax LLC to prepare and file your tax return</li>
+                <li data-en="You consent to electronic delivery of tax documents" data-es="Consiente a la entrega electrónica de documentos fiscales">You consent to electronic delivery of tax documents</li>
+            </ul>
+        </div>
+
+        <!-- Section 7: Accuracy and Audit Support -->
+        <div class="terms-section">
+            <h2 data-en="7. Accuracy and Audit Support" data-es="7. Precisión y Soporte en Auditorías">7. Accuracy and Audit Support</h2>
+            <p data-en="R Vision Tax LLC stands behind the accuracy of our specialized preparation:" data-es="R Vision Tax LLC respalda la precisión de nuestra preparación especializada:">R Vision Tax LLC stands behind the accuracy of our specialized preparation:</p>
+            <ul>
+                <li data-en="Our services are designed for zero regulatory exposure" data-es="Nuestros servicios están diseñados para cero exposición regulatoria">Our services are designed for zero regulatory exposure</li>
+                <li data-en="In the event of an IRS inquiry or audit resulting from our preparation, we will provide support and documentation" data-es="En caso de una consulta o auditoría del IRS resultante de nuestra preparación, proporcionaremos soporte y documentación">In the event of an IRS inquiry or audit resulting from our preparation, we will provide support and documentation</li>
+                <li data-en="Specific audit support details are handled on a case-by-case basis" data-es="Los detalles específicos de soporte en auditorías se manejan caso por caso">Specific audit support details are handled on a case-by-case basis</li>
+            </ul>
+            <p data-en="Note: We are not responsible for errors resulting from incorrect or incomplete information provided by you." data-es="Nota: No somos responsables por errores resultantes de información incorrecta o incompleta proporcionada por usted.">Note: We are not responsible for errors resulting from incorrect or incomplete information provided by you.</p>
+        </div>
+
+        <!-- Section 8: Confidentiality -->
+        <div class="terms-section">
+            <h2 data-en="8. Confidentiality" data-es="8. Confidencialidad">8. Confidentiality</h2>
+            <p data-en="We are committed to maintaining the confidentiality of your information:" data-es="Estamos comprometidos a mantener la confidencialidad de su información:">We are committed to maintaining the confidentiality of your information:</p>
+            <ul>
+                <li data-en="All client information is protected by professional confidentiality obligations" data-es="Toda la información del cliente está protegida por obligaciones de confidencialidad profesional">All client information is protected by professional confidentiality obligations</li>
+                <li data-en="We will not disclose your information to third parties except as required by law or with your consent" data-es="No divulgaremos su información a terceros excepto según lo requiera la ley o con su consentimiento">We will not disclose your information to third parties except as required by law or with your consent</li>
+                <li data-en="Please refer to our Privacy Policy for detailed information on data handling" data-es="Consulte nuestra Política de Privacidad para información detallada sobre el manejo de datos">Please refer to our <a href="privacy.html" style="color: var(--primary-blue);">Privacy Policy</a> for detailed information on data handling</li>
+            </ul>
+        </div>
+
+        <!-- Section 9: Limitation of Liability -->
+        <div class="terms-section">
+            <h2 data-en="9. Limitation of Liability" data-es="9. Limitación de Responsabilidad">9. Limitation of Liability</h2>
+            <p data-en="To the maximum extent permitted by law:" data-es="En la máxima medida permitida por la ley:">To the maximum extent permitted by law:</p>
+            <ul>
+                <li data-en="R Vision Tax LLC's liability shall be limited to the amount of fees paid for the specific service" data-es="La responsabilidad de R Vision Tax LLC se limitará al monto de los honorarios pagados por el servicio específico">R Vision Tax LLC's liability shall be limited to the amount of fees paid for the specific service</li>
+                <li data-en="We are not liable for any indirect, consequential, or punitive damages" data-es="No somos responsables por daños indirectos, consecuentes o punitivos">We are not liable for any indirect, consequential, or punitive damages</li>
+                <li data-en="We are not responsible for IRS penalties resulting from information you provided" data-es="No somos responsables de las penalidades del IRS resultantes de la información que usted proporcionó">We are not responsible for IRS penalties resulting from information you provided</li>
+            </ul>
+        </div>
+
+        <!-- Section 10: Intellectual Property -->
+        <div class="terms-section">
+            <h2 data-en="10. Intellectual Property" data-es="10. Propiedad Intelectual">10. Intellectual Property</h2>
+            <p data-en="All content on our website and in our materials, including but not limited to text, graphics, logos, and software, is the property of R Vision Tax LLC and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written consent." data-es="Todo el contenido en nuestro sitio web y en nuestros materiales, incluyendo pero no limitado a texto, gráficos, logos y software, es propiedad de R Vision Tax LLC y está protegido por leyes de propiedad intelectual. No puede reproducir, distribuir o crear obras derivadas sin nuestro consentimiento expreso por escrito.">All content on our website and in our materials, including but not limited to text, graphics, logos, and software, is the property of R Vision Tax LLC and is protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without our express written consent.</p>
+        </div>
+
+        <!-- Section 11: Termination -->
+        <div class="terms-section">
+            <h2 data-en="11. Termination" data-es="11. Terminación">11. Termination</h2>
+            <p data-en="Either party may terminate the service agreement:" data-es="Cualquiera de las partes puede terminar el acuerdo de servicio:">Either party may terminate the service agreement:</p>
+            <ul>
+                <li data-en="You may terminate by providing written notice before we begin preparing your return" data-es="Usted puede terminar proporcionando notificación por escrito antes de que comencemos a preparar su declaración">You may terminate by providing written notice before we begin preparing your return</li>
+                <li data-en="We may terminate if you fail to provide required information or payment" data-es="Podemos terminar si usted no proporciona la información o pago requerido">We may terminate if you fail to provide required information or payment</li>
+                <li data-en="Fees for work completed prior to termination remain due" data-es="Los honorarios por trabajo completado antes de la terminación siguen siendo debidos">Fees for work completed prior to termination remain due</li>
+            </ul>
+        </div>
+
+        <!-- Section 12: Governing Law -->
+        <div class="terms-section">
+            <h2 data-en="12. Governing Law" data-es="12. Ley Aplicable">12. Governing Law</h2>
+            <p data-en="These Terms shall be governed by and construed in accordance with the laws of the State of Illinois, United States. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts located in Cook County, Illinois." data-es="Estos Términos se regirán e interpretarán de acuerdo con las leyes del Estado de Illinois, Estados Unidos. Cualquier disputa que surja bajo estos Términos estará sujeta a la jurisdicción exclusiva de los tribunales ubicados en el Condado de Cook, Illinois.">These Terms shall be governed by and construed in accordance with the laws of the State of Illinois, United States. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts located in Cook County, Illinois.</p>
+        </div>
+
+        <!-- Section 13: Changes to Terms -->
+        <div class="terms-section">
+            <h2 data-en="13. Changes to Terms" data-es="13. Cambios a los Términos">13. Changes to Terms</h2>
+            <p data-en="We reserve the right to modify these Terms at any time. Changes will be effective upon posting to our website. Your continued use of our services after changes are posted constitutes acceptance of the modified Terms." data-es="Nos reservamos el derecho de modificar estos Términos en cualquier momento. Los cambios serán efectivos al publicarse en nuestro sitio web. Su uso continuado de nuestros servicios después de la publicación de los cambios constituye aceptación de los Términos modificados.">We reserve the right to modify these Terms at any time. Changes will be effective upon posting to our website. Your continued use of our services after changes are posted constitutes acceptance of the modified Terms.</p>
+        </div>
+
+        <!-- Section 14: Contact Information -->
+        <div class="terms-section">
+            <h2 data-en="14. Contact Information" data-es="14. Información de Contacto">14. Contact Information</h2>
+            <p data-en="For questions regarding these Terms and Conditions, please contact us:" data-es="Para preguntas sobre estos Términos y Condiciones, por favor contáctenos:">For questions regarding these Terms and Conditions, please contact us:</p>
+            <p><strong>R Vision Tax LLC</strong><br>
+            928 W Gunnison St<br>
+            Chicago, IL 60640<br>
+            <span data-en="Phone:" data-es="Teléfono:">Phone:</span> +1 (312) 774-5397<br>
+            <span data-en="Email:" data-es="Correo:">Email:</span> <a href="mailto:raulmv@mastoinc.com" style="color: var(--primary-blue);">raulmv@mastoinc.com</a></p>
+        </div>
+
+        <p class="last-updated" data-en="Last Updated: January 2025" data-es="Última Actualización: Enero 2025">Last Updated: January 2025</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="images/logowhite.webp" alt="R Vision Tax" class="footer-logo">
+        <p>© 2025 R Vision Tax LLC. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
+        <p>928 W Gunnison St, Chicago IL 60640 | +1 (312) 774-5397</p>
+        <div class="footer-links">
+            <a href="privacy.html" data-en="Privacy Policy" data-es="Política de Privacidad">Privacy Policy</a>
+            <a href="terms.html" data-en="Terms & Conditions" data-es="Términos y Condiciones">Terms & Conditions</a>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const currentLang = html.getAttribute('data-lang');
+            const newLang = currentLang === 'en' ? 'es' : 'en';
+            html.setAttribute('data-lang', newLang);
+            localStorage.setItem('rvision-lang', newLang);
+            updateLanguage(newLang);
+            document.querySelector('.lang-toggle').textContent = newLang === 'en' ? 'ES' : 'EN';
+        }
+
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-en][data-es]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = text;
+                    } else {
+                        el.textContent = text;
+                    }
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('rvision-lang') || 'en';
+            document.documentElement.setAttribute('data-lang', savedLang);
+            updateLanguage(savedLang);
+            document.querySelector('.lang-toggle').textContent = savedLang === 'en' ? 'ES' : 'EN';
+        });
+    </script>
+</body>
+</html>

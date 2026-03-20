@@ -1,0 +1,33 @@
+{
+  "name": "rvision-tax-api",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker API for R Vision Tax LLC - handles contact forms, onboarding, PDF generation, and email delivery",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:production": "wrangler deploy --env production",
+    "tail": "wrangler tail",
+    "secret:resend": "wrangler secret put RESEND_API_KEY",
+    "secret:cf-token": "wrangler secret put CF_API_TOKEN",
+    "secret:cf-account": "wrangler secret put CF_ACCOUNT_ID"
+  },
+  "keywords": [
+    "cloudflare-workers",
+    "tax",
+    "pdf-generation",
+    "email",
+    "api"
+  ],
+  "author": "R Vision Tax LLC",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

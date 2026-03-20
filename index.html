@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Vision Tax LLC | Expert Tax Solutions</title>
+    <meta name="description" content="R Vision Tax - Expert Vision for Your Financial Peace of Mind. Specialized tax preparation for self-employed, freelancers, and business owners in Chicago.">
+    <link rel="icon" type="image/webp" href="images/favicon.webp">
+    
+    <style>
+        /* ==================== FONTS ==================== */
+        @font-face {
+            font-family: 'Rinter';
+            src: url('fonts/Rinter.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'SpartanMB';
+            src: url('fonts/SpartanMB-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        /* ==================== CSS VARIABLES ==================== */
+        :root {
+            --color-primary: #3000ff;
+            --color-black: #000000;
+            --color-white: #ffffff;
+            --color-gray-dark: #1a1a1a;
+            --color-gray-mid: #333333;
+            --color-gray-light: #f5f5f5;
+            --font-display: 'Rinter', sans-serif;
+            --font-body: 'SpartanMB', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: all 0.2s ease;
+        }
+        
+        /* ==================== RESET & BASE ==================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-black);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* ==================== SPLASH SCREEN ==================== */
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 9999;
+            background: var(--color-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        #splash.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        #splash video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        #splash .skip-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+        
+        /* ==================== NAVIGATION ==================== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+            transition: var(--transition-smooth);
+        }
+        
+        nav.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 40px;
+        }
+        
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            transition: var(--transition-fast);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition-smooth);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+        
+        .nav-cta {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 28px;
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: var(--transition-smooth);
+            border: 2px solid var(--color-primary);
+        }
+        
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--color-primary);
+        }
+        
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--color-white);
+            padding: 6px 12px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .lang-btn.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+        
+        .lang-btn:hover {
+            border-color: var(--color-primary);
+        }
+        
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+        
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--color-white);
+            transition: var(--transition-fast);
+        }
+        
+        /* ==================== HERO SECTION ==================== */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.4) 0%,
+                rgba(0,0,0,0.6) 50%,
+                rgba(0,0,0,0.9) 100%
+            );
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-logo {
+            width: min(400px, 80vw);
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .hero-tagline {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 18px 50px;
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid var(--color-primary);
+            transition: var(--transition-smooth);
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+        
+        .hero-cta:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(48, 0, 255, 0.3);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: none;
+            stroke: var(--color-white);
+            stroke-width: 2;
+            opacity: 0.6;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        /* ==================== ABOUT SECTION ==================== */
+        #about {
+            position: relative;
+            padding: 120px 0;
+            background: var(--color-black);
+            overflow: hidden;
+        }
+        
+        .about-bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .about-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-label {
+            display: inline-block;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            font-family: var(--font-body);
+            font-size: 1.125rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            max-width: 350px;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid var(--color-primary);
+            z-index: -1;
+        }
+        
+        .about-content h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        
+        .about-content h3 span {
+            color: var(--color-primary);
+        }
+        
+        .about-content p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 20px;
+        }
+        
+        /* Value Cards */
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 80px;
+        }
+        
+        .value-card {
+            background: linear-gradient(135deg, rgba(48,0,255,0.1) 0%, rgba(0,0,0,0.8) 100%);
+            border: 1px solid rgba(48,0,255,0.2);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 40px rgba(48,0,255,0.2);
+        }
+        
+        .value-card .icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 25px;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .value-card .icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--color-white);
+        }
+        
+        .value-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+        
+        .value-card p {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+        
+        /* ==================== FAQ SECTION ==================== */
+        #faq {
+            padding: 120px 0;
+            background: var(--color-gray-dark);
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 30px 50px 30px 0;
+            text-align: left;
+            cursor: pointer;
+            position: relative;
+            font-family: var(--font-display);
+            font-size: 1.125rem;
+            color: var(--color-white);
+            transition: var(--transition-fast);
+        }
+        
+        .faq-question:hover {
+            color: var(--color-primary);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            transition: var(--transition-fast);
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 30px;
+        }
+        
+        .faq-answer p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.75);
+        }
+        
+        /* ==================== CONTACT SECTION ==================== */
+        #contact {
+            padding: 120px 0;
+            background: var(--color-black);
+            position: relative;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+        
+        .contact-info h3 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--color-primary);
+        }
+        
+        .contact-item span {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .contact-item a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        
+        .contact-item a:hover {
+            color: var(--color-primary);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: var(--color-gray-dark);
+            padding: 50px;
+            border: 1px solid rgba(48,0,255,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .form-group label .required {
+            color: var(--color-primary);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--color-black);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            color: var(--color-white);
+            font-family: var(--font-display);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .form-submit:hover {
+            background: transparent;
+        }
+        
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: var(--color-gray-dark);
+            padding: 60px 40px 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .footer-logo img {
+            height: 30px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            transition: var(--transition-fast);
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        /* ==================== MODAL ==================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--color-gray-dark);
+            padding: 50px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(48,0,255,0.3);
+        }
+        
+        .modal-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .modal-content p {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        .modal-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .modal-btn {
+            padding: 15px 35px;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-decoration: none;
+        }
+        
+        .modal-btn.primary {
+            background: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            color: var(--color-white);
+        }
+        
+        .modal-btn.primary:hover {
+            background: transparent;
+        }
+        
+        .modal-btn.secondary {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.3);
+            color: var(--color-white);
+        }
+        
+        .modal-btn.secondary:hover {
+            border-color: var(--color-white);
+        }
+        
+        /* ==================== RESPONSIVE ==================== */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .value-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--color-gray-dark);
+                flex-direction: column;
+                justify-content: center;
+                gap: 30px;
+                transition: var(--transition-smooth);
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .nav-cta {
+                margin-top: 20px;
+            }
+            
+            .lang-toggle {
+                margin-left: 0;
+            }
+            
+            .hero-logo {
+                width: 250px;
+            }
+            
+            .hero-tagline {
+                font-size: 0.875rem;
+            }
+            
+            .section-header {
+                margin-bottom: 50px;
+            }
+            
+            .about-container,
+            .faq-container,
+            .contact-container {
+                padding: 0 20px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+        
+        /* ==================== LANGUAGE VISIBILITY ==================== */
+        [data-lang="en"] .es,
+        [data-lang="es"] .en {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash">
+        <video autoplay muted playsinline id="splash-video">
+            <source src="images/rvideo.webm" type="video/webm">
+        </video>
+        <span class="skip-hint en">Click anywhere to continue</span>
+        <span class="skip-hint es">Haz clic para continuar</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#hero" class="nav-logo">
+            <img src="images/logowhite.webp" alt="R Vision Tax">
+        </a>
+        
+        <div class="nav-menu" id="nav-menu">
+            <ul class="nav-links">
+                <li><a href="#hero" class="en">Home</a><a href="#hero" class="es">Inicio</a></li>
+                <li><a href="#about" class="en">About</a><a href="#about" class="es">Nosotros</a></li>
+                <li><a href="#faq" class="en">FAQ's</a><a href="#faq" class="es">Preguntas</a></li>
+                <li><a href="#contact" class="en">Contact</a><a href="#contact" class="es">Contacto</a></li>
+            </ul>
+            <a href="onboarding.html" class="nav-cta">
+                <span class="en">Onboarding</span>
+                <span class="es">Inscripción</span>
+            </a>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+        </div>
+        
+        <div class="mobile-toggle" id="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="images/rcity1.webm" type="video/webm">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="images/logowhite.webp" alt="R Vision Tax" class="hero-logo">
+            <p class="hero-tagline en">Expert Vision for Your Financial Peace of Mind</p>
+            <p class="hero-tagline es">Visión Experta para tu Tranquilidad Financiera</p>
+            <a href="onboarding.html" class="hero-cta">
+                <span class="en">Get On Board</span>
+                <span class="es">Inscríbete Ahora</span>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <video class="about-bg-video" autoplay muted loop playsinline>
+            <source src="images/dominos.webm" type="video/webm">
+        </video>
+        <div class="about-container">
+            <div class="section-header">
+                <span class="section-label en">Who We Are</span>
+                <span class="section-label es">Quiénes Somos</span>
+                <h2 class="section-title en">Re-Vision Your Taxes</h2>
+                <h2 class="section-title es">Re-Visión de tus Impuestos</h2>
+                <p class="section-subtitle en">We turn tax complexity into financial clarity for Chicago's independent professionals.</p>
+                <p class="section-subtitle es">Convertimos la complejidad fiscal en claridad financiera para los profesionales independientes de Chicago.</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="images/rblue.webp" alt="R Vision Tax Authority">
+                </div>
+                <div class="about-content">
+                    <h3 class="en">The <span>R</span> Stands for Rigor</h3>
+                    <h3 class="es">La <span>R</span> Representa Rigor</h3>
+                    <p class="en">At R Vision Tax, we specialize exclusively in the tax needs of Chicago's independent contractors—Uber drivers, DoorDash deliverers, freelancers, and home business owners. Our name says it all: we Re-Vision every return with expert scrutiny to ensure maximum legal deductions and zero IRS risk.</p>
+                    <p class="es">En R Vision Tax, nos especializamos exclusivamente en las necesidades fiscales de los contratistas independientes de Chicago: conductores de Uber, repartidores de DoorDash, freelancers y propietarios de negocios en casa. Nuestro nombre lo dice todo: Re-Visionamos cada declaración con escrutinio experto para garantizar deducciones legales máximas y cero riesgo con el IRS.</p>
+                    <p class="en">Our fixed-fee pricing eliminates billing anxiety, giving you complete budget control while our local expertise handles the specific state and city tax requirements that make a difference.</p>
+                    <p class="es">Nuestros precios de tarifa fija eliminan la ansiedad por la facturación, dándote control total del presupuesto mientras nuestra experiencia local maneja los requisitos fiscales estatales y municipales específicos que marcan la diferencia.</p>
+                </div>
+            </div>
+            
+            <div class="value-cards">
+                <div class="value-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h4 class="en">Schedule C Mastery</h4>
+                    <h4 class="es">Dominio del Schedule C</h4>
+                    <p class="en">We focus exclusively on self-employed tax returns, ensuring maximum legal deductions for your unique business expenses.</p>
+                    <p class="es">Nos enfocamos exclusivamente en declaraciones de impuestos para autónomos, garantizando deducciones legales máximas para tus gastos empresariales únicos.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h4 class="en">Fixed-Fee Pricing</h4>
+                    <h4 class="es">Precio Fijo</h4>
+                    <p class="en">Our predictable, flat-rate pricing eliminates the anxiety of hourly billing, guaranteeing budget control.</p>
+                    <p class="es">Nuestros precios fijos y predecibles eliminan la ansiedad de la facturación por hora, garantizando control del presupuesto.</p>
+                </div>
+                <div class="value-card">
+                    <div class="icon">
+                        <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h4 class="en">Local Authority</h4>
+                    <h4 class="es">Autoridad Local</h4>
+                    <p class="en">We are local experts in the specific Illinois state and Chicago city tax requirements for self-employed individuals.</p>
+                    <p class="es">Somos expertos locales en los requisitos fiscales específicos del estado de Illinois y la ciudad de Chicago para trabajadores autónomos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="faq-container">
+            <div class="section-header">
+                <span class="section-label en">Questions & Answers</span>
+                <span class="section-label es">Preguntas y Respuestas</span>
+                <h2 class="section-title en">Frequently Asked Questions</h2>
+                <h2 class="section-title es">Preguntas Frecuentes</h2>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question en">What services does R Vision Tax specialize in?</button>
+                    <button class="faq-question es">¿En qué servicios se especializa R Vision Tax?</button>
+                    <div class="faq-answer">
+                        <p class="en">We specialize exclusively in complex business tax preparation and filing. Our core focus includes Forms 1120 (Corporate), 1120-S (S-Corp), and complex Schedule C returns. We are not a general bookkeeping or payroll service—we are tax experts that partner with your firm.</p>
+                        <p class="es">Nos especializamos exclusivamente en la preparación y presentación de impuestos empresariales complejos. Nuestro enfoque principal incluye los Formularios 1120 (Corporativo), 1120-S (S-Corp) y declaraciones complejas del Schedule C. No somos un servicio general de contabilidad o nómina—somos expertos fiscales que se asocian con tu empresa.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question en">How does R Vision Tax integrate with my existing accounting firm?</button>
+                    <button class="faq-question es">¿Cómo se integra R Vision Tax con mi firma contable existente?</button>
+                    <div class="faq-answer">
+                        <p class="en">We function as a seamless extension of your tax department. You manage the client relationship, and we handle the specialized preparation and filing complexity behind the scenes. Our Smart Partner Intake system ensures a smooth, secure transfer of client data.</p>
+                        <p class="es">Funcionamos como una extensión perfecta de tu departamento fiscal. Tú gestionas la relación con el cliente, y nosotros manejamos la preparación especializada y la complejidad de la presentación entre bastidores. Nuestro sistema Smart Partner Intake asegura una transferencia fluida y segura de los datos del cliente.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question en">Why should my firm use R Vision Tax instead of hiring an internal expert?</button>
+                    <button class="faq-question es">¿Por qué mi firma debería usar R Vision Tax en lugar de contratar un experto interno?</button>
+                    <div class="faq-answer">
+                        <p class="en">Outsourcing the preparation of complex returns to us is more cost-effective and reduces your firm's internal risk. You gain access to dedicated tax specialists without the overhead of a full-time employee, managing peak season workload effortlessly.</p>
+                        <p class="es">Externalizar la preparación de declaraciones complejas a nosotros es más rentable y reduce el riesgo interno de tu firma. Obtienes acceso a especialistas fiscales dedicados sin los costos generales de un empleado a tiempo completo, manejando la carga de trabajo de temporada alta sin esfuerzo.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question en">What is your pricing model?</button>
+                    <button class="faq-question es">¿Cuál es su modelo de precios?</button>
+                    <div class="faq-answer">
+                        <p class="en">We operate on a fixed-fee structure for specific returns and complexity levels. This offers your firm complete budget predictability. You will receive a clear, upfront quote for each case, eliminating hourly billing surprises and making it easy for you to bill your end-client.</p>
+                        <p class="es">Operamos con una estructura de tarifa fija para declaraciones específicas y niveles de complejidad. Esto ofrece a tu firma una previsibilidad presupuestaria completa. Recibirás una cotización clara y anticipada para cada caso, eliminando las sorpresas de facturación por hora y facilitando la facturación a tu cliente final.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question en">What security measures do you have in place for client data?</button>
+                    <button class="faq-question es">¿Qué medidas de seguridad tienen para los datos de los clientes?</button>
+                    <div class="faq-answer">
+                        <p class="en">We prioritize data security. All client information is transferred and stored via our secure, encrypted digital portal (Smart Partner Intake), not through insecure email chains. We adhere to strict industry standards to maintain client confidentiality.</p>
+                        <p class="es">Priorizamos la seguridad de los datos. Toda la información del cliente se transfiere y almacena a través de nuestro portal digital seguro y encriptado (Smart Partner Intake), no a través de cadenas de correo electrónico inseguras. Nos adherimos a estrictos estándares de la industria para mantener la confidencialidad del cliente.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question en">Who is responsible for filing the return with the IRS?</button>
+                    <button class="faq-question es">¿Quién es responsable de presentar la declaración ante el IRS?</button>
+                    <div class="faq-answer">
+                        <p class="en">R Vision Tax acts as the authorized Electronic Return Originator (ERO) and transmitter. We are responsible for the compliant electronic submission of the prepared returns to the IRS and applicable state agencies, offering your firm an additional layer of reliability.</p>
+                        <p class="es">R Vision Tax actúa como el Originador Electrónico de Declaraciones (ERO) autorizado y transmisor. Somos responsables de la presentación electrónica conforme de las declaraciones preparadas al IRS y las agencias estatales aplicables, ofreciendo a tu firma una capa adicional de confiabilidad.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question en">How do I send client documents to R Vision Tax?</button>
+                    <button class="faq-question es">¿Cómo envío documentos de clientes a R Vision Tax?</button>
+                    <div class="faq-answer">
+                        <p class="en">You will use our secure Smart Partner Intake system on our website. This platform is designed to guide your team through the necessary documentation upload (P&L statements, Corporate ID, etc.), ensuring we receive 100% accurate and complete data instantly.</p>
+                        <p class="es">Utilizarás nuestro sistema seguro Smart Partner Intake en nuestro sitio web. Esta plataforma está diseñada para guiar a tu equipo a través de la carga de documentación necesaria (estados de P&L, ID Corporativo, etc.), asegurando que recibamos datos 100% precisos y completos al instante.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <span class="section-label en">Get In Touch</span>
+                <span class="section-label es">Contáctanos</span>
+                <h3 class="en">Let's Talk About Your Taxes</h3>
+                <h3 class="es">Hablemos de tus Impuestos</h3>
+                <p class="en">Ready to experience peace of mind with your tax filing? Reach out to us with any questions or start your onboarding process today.</p>
+                <p class="es">¿Listo para experimentar tranquilidad con tu declaración de impuestos? Contáctanos con cualquier pregunta o comienza tu proceso de inscripción hoy.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        <span>928 W Gunnison St, Chicago IL 60640</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        <a href="tel:+13127745397">+1 (312) 774-5397</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        <a href="mailto:raulmv@mastoinc.com">raulmv@mastoinc.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label class="en">Name</label>
+                    <label class="es">Nombre</label>
+                    <input type="text" name="name" id="contact-name">
+                </div>
+                <div class="form-group">
+                    <label class="en">Phone <span class="required">*</span></label>
+                    <label class="es">Teléfono <span class="required">*</span></label>
+                    <input type="tel" name="phone" id="contact-phone" required>
+                </div>
+                <div class="form-group">
+                    <label class="en">Email <span class="required">*</span></label>
+                    <label class="es">Correo Electrónico <span class="required">*</span></label>
+                    <input type="email" name="email" id="contact-email" required>
+                </div>
+                <div class="form-group">
+                    <label class="en">Message</label>
+                    <label class="es">Mensaje</label>
+                    <textarea name="message" id="contact-message"></textarea>
+                </div>
+                <button type="submit" class="form-submit">
+                    <span class="en">Send Message</span>
+                    <span class="es">Enviar Mensaje</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="#hero" class="footer-logo">
+                <img src="images/logowhite.webp" alt="R Vision Tax">
+            </a>
+            <div class="footer-links">
+                <a href="privacy.html" class="en">Privacy Policy</a>
+                <a href="privacy.html" class="es">Política de Privacidad</a>
+                <a href="terms.html" class="en">Terms & Conditions</a>
+                <a href="terms.html" class="es">Términos y Condiciones</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 R Vision Tax LLC. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Contact Form -->
+    <div class="modal-overlay" id="redirect-modal">
+        <div class="modal-content">
+            <h3 class="en">Save Time!</h3>
+            <h3 class="es">¡Ahorra Tiempo!</h3>
+            <p class="en">Save time by filling up your tax details to get a solution quicker! Do you want to send your details? Your message will still be sent.</p>
+            <p class="es">¡Ahorra tiempo completando tus datos fiscales para obtener una solución más rápida! ¿Quieres enviar tus detalles? Tu mensaje aún será enviado.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn primary" id="modal-yes">
+                    <span class="en">Yes, Go to Onboarding</span>
+                    <span class="es">Sí, Ir a Inscripción</span>
+                </button>
+                <button class="modal-btn secondary" id="modal-no">
+                    <span class="en">No, Just Send</span>
+                    <span class="es">No, Solo Enviar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== SPLASH SCREEN ====================
+        const splash = document.getElementById('splash');
+        const splashVideo = document.getElementById('splash-video');
+        
+        function hideSplash() {
+            splash.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        
+        splash.addEventListener('click', hideSplash);
+        splashVideo.addEventListener('ended', hideSplash);
+        
+        // Fallback timeout
+        setTimeout(hideSplash, 10000);
+        
+        // ==================== NAVIGATION ====================
+        const navbar = document.getElementById('navbar');
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        // Scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // ==================== LANGUAGE TOGGLE ====================
+        const langBtns = document.querySelectorAll('.lang-btn');
+        
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                document.documentElement.dataset.lang = lang;
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                localStorage.setItem('rvision-lang', lang);
+            });
+        });
+        
+        // Load saved language
+        const savedLang = localStorage.getItem('rvision-lang') || 'en';
+        document.documentElement.dataset.lang = savedLang;
+        langBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === savedLang);
+        });
+        
+        // ==================== FAQ ACCORDION ====================
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const questions = item.querySelectorAll('.faq-question');
+            questions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // ==================== CONTACT FORM ====================
+        const contactForm = document.getElementById('contact-form');
+        const redirectModal = document.getElementById('redirect-modal');
+        const modalYes = document.getElementById('modal-yes');
+        const modalNo = document.getElementById('modal-no');
+        
+        let formData = null;
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Store form data
+            formData = new FormData(contactForm);
+            
+            // Show modal
+            redirectModal.classList.add('active');
+        });
+        
+        modalYes.addEventListener('click', () => {
+            // Send form data then redirect to onboarding
+            sendContactForm(formData).then(() => {
+                window.location.href = 'onboarding.html';
+            });
+        });
+        
+        modalNo.addEventListener('click', () => {
+            // Just send form data
+            sendContactForm(formData).then(() => {
+                redirectModal.classList.remove('active');
+                contactForm.reset();
+                alert(document.documentElement.dataset.lang === 'es' 
+                    ? '¡Mensaje enviado exitosamente!' 
+                    : 'Message sent successfully!');
+            });
+        });
+        
+        async function sendContactForm(data) {
+            try {
+                // In production, this would send to Cloudflare Worker
+                const response = await fetch('https://rvision-tax-api.proud-bread-a0f3.workers.dev/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: data.get('name'),
+                        phone: data.get('phone'),
+                        email: data.get('email'),
+                        message: data.get('message')
+                    })
+                });
+                return response;
+            } catch (error) {
+                console.log('Form submission - connect to backend:', error);
+                return Promise.resolve();
+            }
+        }
+        
+        // Close modal on outside click
+        redirectModal.addEventListener('click', (e) => {
+            if (e.target === redirectModal) {
+                redirectModal.classList.remove('active');
+            }
+        });
+        
+        // ==================== SMOOTH SCROLL ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

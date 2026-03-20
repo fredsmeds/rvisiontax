@@ -1,0 +1,65 @@
+# R Vision Tax - Cloudflare Worker Configuration
+# https://developers.cloudflare.com/workers/
+
+name = "rvision-tax-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Account ID (set via environment or here)
+# account_id = "your-account-id"
+
+# Routes - update with your domain
+# routes = [
+#   { pattern = "api.rvisiontax.com/*", zone_name = "rvisiontax.com" }
+# ]
+
+# For development/testing without a custom domain
+# workers_dev = true
+
+[vars]
+# Default recipient email
+RECIPIENT_EMAIL = "raulmv@mastoinc.com"
+# From email (requires verified domain in Resend)
+FROM_EMAIL = "R Vision Tax <noreply@rvisiontax.com>"
+
+# Secrets (set via wrangler secret put)
+# Run these commands to set secrets:
+# wrangler secret put RESEND_API_KEY
+# wrangler secret put CF_API_TOKEN
+# wrangler secret put CF_ACCOUNT_ID
+
+# Optional: KV Namespace for storing submissions
+# [[kv_namespaces]]
+# binding = "SUBMISSIONS_KV"
+# id = "your-kv-namespace-id"
+# preview_id = "your-preview-kv-namespace-id"
+
+# Optional: D1 Database for structured storage
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "rvision-submissions"
+# database_id = "your-d1-database-id"
+
+# Browser Rendering binding (for PDF generation)
+# Note: Browser Rendering must be enabled in your Cloudflare account
+# [browser]
+# binding = "BROWSER"
+
+# Build configuration (if using TypeScript or bundler)
+# [build]
+# command = "npm run build"
+# [build.upload]
+# format = "modules"
+
+# Environment-specific configurations
+[env.production]
+name = "rvision-tax-api"
+# routes = [{ pattern = "api.rvisiontax.com/*", zone_name = "rvisiontax.com" }]
+
+[env.staging]
+name = "rvision-tax-api-staging"
+# workers_dev = true
+
+# Observability
+[observability]
+enabled = true

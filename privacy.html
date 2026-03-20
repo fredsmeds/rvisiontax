@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | R Vision Tax LLC</title>
+    <meta name="description" content="R Vision Tax LLC Privacy Policy - How we collect, use, and protect your personal information.">
+    <link rel="icon" type="image/webp" href="images/favicon.webp">
+    
+    <style>
+        @font-face {
+            font-family: 'Rinter';
+            src: url('fonts/Rinter.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'SpartanMB';
+            src: url('fonts/SpartanMB-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        :root {
+            --color-primary: #3000ff;
+            --color-black: #000000;
+            --color-white: #ffffff;
+            --color-gray-dark: #1a1a1a;
+            --font-display: 'Rinter', sans-serif;
+            --font-body: 'SpartanMB', sans-serif;
+            --transition-fast: all 0.2s ease;
+        }
+        
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html { scroll-behavior: smooth; font-size: 16px; }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-black);
+            color: var(--color-white);
+            line-height: 1.8;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(48,0,255,0.2);
+        }
+        
+        .nav-logo img { height: 35px; width: auto; }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .nav-back {
+            color: var(--color-white);
+            text-decoration: none;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-fast);
+        }
+        
+        .nav-back:hover { color: var(--color-primary); }
+        
+        .nav-back svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+        }
+        
+        .lang-toggle { display: flex; gap: 5px; }
+        
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--color-white);
+            padding: 6px 12px;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .lang-btn.active {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+        }
+        
+        main {
+            padding: 120px 40px 80px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 10px;
+        }
+        
+        h1 span { color: var(--color-primary); }
+        
+        .last-updated {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin: 40px 0 20px;
+            color: var(--color-primary);
+        }
+        
+        p {
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.85);
+        }
+        
+        ul {
+            margin: 15px 0 25px 25px;
+            color: rgba(255,255,255,0.85);
+        }
+        
+        li { margin-bottom: 10px; }
+        
+        a { color: var(--color-primary); }
+        
+        footer {
+            background: var(--color-gray-dark);
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        footer p {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.5);
+            margin: 0;
+        }
+        
+        footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            main { padding: 100px 20px 60px; }
+        }
+        
+        [data-lang="en"] .es,
+        [data-lang="es"] .en { display: none !important; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="images/logowhite.webp" alt="R Vision Tax">
+        </a>
+        <div class="nav-right">
+            <a href="index.html" class="nav-back">
+                <svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span class="en">Back to Home</span>
+                <span class="es">Volver al Inicio</span>
+            </a>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h1 class="en">Privacy <span>Policy</span></h1>
+        <h1 class="es">Política de <span>Privacidad</span></h1>
+        <p class="last-updated en">Last Updated: January 2025</p>
+        <p class="last-updated es">Última Actualización: Enero 2025</p>
+        
+        <!-- English Version -->
+        <div class="en">
+            <p>R Vision Tax LLC ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website and tax preparation services.</p>
+            
+            <h2>1. Information We Collect</h2>
+            <p>We collect information that you provide directly to us, including:</p>
+            <ul>
+                <li><strong>Personal Identification Information:</strong> Name, Social Security Number (SSN), date of birth, address, phone number, and email address.</li>
+                <li><strong>Financial Information:</strong> Bank account numbers, routing numbers, income information, tax documents (W-2, 1099 forms, etc.), and expense records.</li>
+                <li><strong>Identification Documents:</strong> Driver's license, state ID, or passport information.</li>
+                <li><strong>Dependent Information:</strong> Names, SSNs, dates of birth, and relationship information for dependents.</li>
+                <li><strong>Digital Signatures:</strong> Electronic signatures provided through our Smart Intake Form.</li>
+            </ul>
+            
+            <h2>2. How We Use Your Information</h2>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Prepare and file your federal and state tax returns</li>
+                <li>Communicate with you about your tax preparation status</li>
+                <li>Comply with legal and regulatory requirements</li>
+                <li>Respond to IRS or state tax agency inquiries on your behalf</li>
+                <li>Improve our services and customer experience</li>
+                <li>Send you important updates about tax laws and deadlines</li>
+            </ul>
+            
+            <h2>3. Information Security</h2>
+            <p>We implement robust security measures to protect your personal and financial information:</p>
+            <ul>
+                <li><strong>Encryption:</strong> All data transmitted through our website is encrypted using industry-standard SSL/TLS protocols.</li>
+                <li><strong>Secure Storage:</strong> Your information is stored on secure, encrypted servers with restricted access.</li>
+                <li><strong>Access Controls:</strong> Only authorized personnel with a legitimate business need can access your information.</li>
+                <li><strong>No Email Transmission:</strong> We never transmit sensitive financial information via unsecured email.</li>
+            </ul>
+            
+            <h2>4. Information Sharing</h2>
+            <p>We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:</p>
+            <ul>
+                <li><strong>Tax Authorities:</strong> With the IRS and state tax agencies as required for tax filing.</li>
+                <li><strong>Service Providers:</strong> With trusted partners who assist us in operating our business (subject to confidentiality agreements).</li>
+                <li><strong>Legal Requirements:</strong> When required by law, subpoena, or legal process.</li>
+                <li><strong>With Your Consent:</strong> When you explicitly authorize us to share your information.</li>
+            </ul>
+            
+            <h2>5. Data Retention</h2>
+            <p>We retain your tax records and personal information for a minimum of seven (7) years, as required by IRS regulations. After this period, records may be securely destroyed unless longer retention is required by law.</p>
+            
+            <h2>6. Your Rights</h2>
+            <p>You have the right to:</p>
+            <ul>
+                <li>Access the personal information we hold about you</li>
+                <li>Request correction of inaccurate information</li>
+                <li>Request deletion of your information (subject to legal retention requirements)</li>
+                <li>Opt-out of marketing communications</li>
+                <li>Receive a copy of your tax records</li>
+            </ul>
+            
+            <h2>7. Cookies and Tracking</h2>
+            <p>Our website may use cookies and similar technologies to enhance your experience, analyze usage patterns, and improve our services. You can control cookie preferences through your browser settings.</p>
+            
+            <h2>8. Children's Privacy</h2>
+            <p>Our services are not intended for individuals under 18 years of age. We do not knowingly collect personal information from minors without parental consent.</p>
+            
+            <h2>9. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy periodically. We will notify you of significant changes by posting the new policy on our website and updating the "Last Updated" date.</p>
+            
+            <h2>10. Contact Us</h2>
+            <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+            <p><strong>R Vision Tax LLC</strong><br>
+            928 W Gunnison St, Chicago IL 60640<br>
+            Phone: +1 (312) 774-5397<br>
+            Email: <a href="mailto:raulmv@mastoinc.com">raulmv@mastoinc.com</a></p>
+        </div>
+        
+        <!-- Spanish Version -->
+        <div class="es">
+            <p>R Vision Tax LLC ("nosotros", "nuestro" o "nos") está comprometido a proteger su privacidad. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando utiliza nuestro sitio web y servicios de preparación de impuestos.</p>
+            
+            <h2>1. Información que Recopilamos</h2>
+            <p>Recopilamos información que usted nos proporciona directamente, incluyendo:</p>
+            <ul>
+                <li><strong>Información de Identificación Personal:</strong> Nombre, Número de Seguro Social (SSN), fecha de nacimiento, dirección, número de teléfono y correo electrónico.</li>
+                <li><strong>Información Financiera:</strong> Números de cuenta bancaria, números de ruta, información de ingresos, documentos fiscales (W-2, formularios 1099, etc.) y registros de gastos.</li>
+                <li><strong>Documentos de Identificación:</strong> Información de licencia de conducir, ID estatal o pasaporte.</li>
+                <li><strong>Información de Dependientes:</strong> Nombres, SSN, fechas de nacimiento e información de relación para dependientes.</li>
+                <li><strong>Firmas Digitales:</strong> Firmas electrónicas proporcionadas a través de nuestro Formulario Inteligente.</li>
+            </ul>
+            
+            <h2>2. Cómo Usamos su Información</h2>
+            <p>Usamos la información que recopilamos para:</p>
+            <ul>
+                <li>Preparar y presentar sus declaraciones de impuestos federales y estatales</li>
+                <li>Comunicarnos con usted sobre el estado de su preparación de impuestos</li>
+                <li>Cumplir con requisitos legales y regulatorios</li>
+                <li>Responder a consultas del IRS o agencias tributarias estatales en su nombre</li>
+                <li>Mejorar nuestros servicios y experiencia del cliente</li>
+                <li>Enviarle actualizaciones importantes sobre leyes fiscales y fechas límite</li>
+            </ul>
+            
+            <h2>3. Seguridad de la Información</h2>
+            <p>Implementamos medidas de seguridad robustas para proteger su información personal y financiera:</p>
+            <ul>
+                <li><strong>Encriptación:</strong> Todos los datos transmitidos a través de nuestro sitio web están encriptados usando protocolos SSL/TLS estándar de la industria.</li>
+                <li><strong>Almacenamiento Seguro:</strong> Su información se almacena en servidores seguros y encriptados con acceso restringido.</li>
+                <li><strong>Controles de Acceso:</strong> Solo el personal autorizado con una necesidad comercial legítima puede acceder a su información.</li>
+                <li><strong>Sin Transmisión por Email:</strong> Nunca transmitimos información financiera sensible por correo electrónico no seguro.</li>
+            </ul>
+            
+            <h2>4. Compartir Información</h2>
+            <p>No vendemos, comercializamos ni alquilamos su información personal a terceros. Podemos compartir su información solo en las siguientes circunstancias:</p>
+            <ul>
+                <li><strong>Autoridades Fiscales:</strong> Con el IRS y agencias tributarias estatales según lo requerido para la presentación de impuestos.</li>
+                <li><strong>Proveedores de Servicios:</strong> Con socios de confianza que nos ayudan a operar nuestro negocio (sujeto a acuerdos de confidencialidad).</li>
+                <li><strong>Requisitos Legales:</strong> Cuando lo requiera la ley, citación o proceso legal.</li>
+                <li><strong>Con su Consentimiento:</strong> Cuando usted nos autoriza explícitamente a compartir su información.</li>
+            </ul>
+            
+            <h2>5. Retención de Datos</h2>
+            <p>Retenemos sus registros fiscales e información personal por un mínimo de siete (7) años, según lo requieren las regulaciones del IRS. Después de este período, los registros pueden ser destruidos de forma segura a menos que la ley requiera una retención más prolongada.</p>
+            
+            <h2>6. Sus Derechos</h2>
+            <p>Usted tiene derecho a:</p>
+            <ul>
+                <li>Acceder a la información personal que tenemos sobre usted</li>
+                <li>Solicitar la corrección de información inexacta</li>
+                <li>Solicitar la eliminación de su información (sujeto a requisitos legales de retención)</li>
+                <li>Optar por no recibir comunicaciones de marketing</li>
+                <li>Recibir una copia de sus registros fiscales</li>
+            </ul>
+            
+            <h2>7. Cookies y Rastreo</h2>
+            <p>Nuestro sitio web puede usar cookies y tecnologías similares para mejorar su experiencia, analizar patrones de uso y mejorar nuestros servicios. Puede controlar las preferencias de cookies a través de la configuración de su navegador.</p>
+            
+            <h2>8. Privacidad de Menores</h2>
+            <p>Nuestros servicios no están destinados a personas menores de 18 años. No recopilamos intencionalmente información personal de menores sin el consentimiento de los padres.</p>
+            
+            <h2>9. Cambios a esta Política</h2>
+            <p>Podemos actualizar esta Política de Privacidad periódicamente. Le notificaremos de cambios significativos publicando la nueva política en nuestro sitio web y actualizando la fecha de "Última Actualización".</p>
+            
+            <h2>10. Contáctenos</h2>
+            <p>Si tiene preguntas sobre esta Política de Privacidad o nuestras prácticas de datos, por favor contáctenos:</p>
+            <p><strong>R Vision Tax LLC</strong><br>
+            928 W Gunnison St, Chicago IL 60640<br>
+            Teléfono: +1 (312) 774-5397<br>
+            Email: <a href="mailto:raulmv@mastoinc.com">raulmv@mastoinc.com</a></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 R Vision Tax LLC. All Rights Reserved.</p>
+        <p style="margin-top: 10px;">
+            <a href="privacy.html" class="en">Privacy Policy</a>
+            <a href="privacy.html" class="es">Política de Privacidad</a>
+            <a href="terms.html" class="en">Terms & Conditions</a>
+            <a href="terms.html" class="es">Términos y Condiciones</a>
+        </p>
+    </footer>
+
+    <script>
+        const langBtns = document.querySelectorAll('.lang-btn');
+        
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                document.documentElement.dataset.lang = lang;
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                localStorage.setItem('rvision-lang', lang);
+            });
+        });
+        
+        const savedLang = localStorage.getItem('rvision-lang') || 'en';
+        document.documentElement.dataset.lang = savedLang;
+        langBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.lang === savedLang);
+        });
+    </script>
+</body>
+</html>
